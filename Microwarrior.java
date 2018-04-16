@@ -9,18 +9,19 @@
 public class Microwarrior {
 	/*El botin inicial es 3*/
 	final int BOTIN_INICIAL=3;
-	private String nombre, raza, medio, habesp, img, nombreTeam;
+	private String nombre, raza, medio, habesp, img, nombreTeam, lema;
 	private int ataque, defensa, botin, id, equid, victorias, derrotas, empates, fv;
 	private boolean combate, inteam;
 	
 	/*Método constructor*/
 	public Microwarrior (String nombre, String raza, String medio, String habesp,
-			String img, int ataque, int defensa, int id, boolean combate) {
+			String img, String lema, int ataque, int defensa, int id, boolean combate) {
 		this.nombre=nombre;
 		this.raza=raza;
 		this.medio=medio;
 		this.habesp=habesp;
 		this.img=img;
+		this.lema=lema;
 		this.ataque=ataque;
 		this.defensa=defensa;
 		this.botin=BOTIN_INICIAL;
@@ -44,6 +45,9 @@ public class Microwarrior {
 	}
 	public String getImg() {
 		return this.img;
+	}
+	public String getLema() {
+		return this.lema;
 	}
 	public String getNombreTeam() {
 		return this.nombreTeam;
@@ -96,6 +100,9 @@ public class Microwarrior {
 	}
 	public void setImg(String img) {
 		this.img=img;
+	}
+	public void setLema(String lema ) {
+		this.lema=lema;
 	}
 	public void setNombreTeam(String nombreTeam) {
 		this.nombreTeam=nombreTeam;
