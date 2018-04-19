@@ -34,19 +34,8 @@ public class Jugador extends Usuario {
 	
 	public void crearMicrowarrior() {
 		
-		Microwarrior nuevo_microwarrior=new Microwarior();
-		nuevo_microwarrior.setNombre();
-		nuevo_microwarrior.setRaza();
-		nuevo_microwarrior.setMedio();
-		nuevo_microwarrior.setHabesp();
-		nuevo_microwarrior.setImg();
-		nuevo_microwarrior.setLema();
-		nuevo_microwarrior.setNombreTeam();
-		nuevo_microwarrior.setAtaque();
-		nuevo_microwarrior.setDefensa();
-		nuevo_microwarrior.setBotin();
-		nuevo_microwarrior.setId();
-		nuevo_microwarrior.setEquid();
+		Microwarrior nuevo_microwarrior=new Microwarior("nombre", "raza", "medio", "habilidad", "imagen", "lema", 5, 5, 1, true);
+		
 	}
 	
 	private void editMicrowarrior(String id) {

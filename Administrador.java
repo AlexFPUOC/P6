@@ -13,9 +13,6 @@ public class Administrador extends Usuario{
 	
 	public void modificarUsuarioJugador(String nombre_jugador, String clave_jugador) {
 		
-		Jugador jugador=new Jugador();
-		jugador.setjugador(nombre_jugador);
-		jugador.setlema(clave_jugador);
 		// CODIGO PARA HACER LA CONSULTA A LA BBDD
 	}
 	
