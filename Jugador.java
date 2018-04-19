@@ -90,6 +90,7 @@ public class Jugador extends Usuario {
 	
 	public String listarmicrowarriors() {
 		
+		//CONSULTA A LA BBDD
 		for (int x=0; x<arraymicrowarriors.length; x++) { // Utilizamos un bucle para mostrar todos los elementos del array que contendrá a los microwarriors
 			return arraymicrowarriors[x] ;
 		}
@@ -98,12 +99,14 @@ public class Jugador extends Usuario {
 	
 	public String buscarmicrowarrior(String Id) {
 		
-		
-		return "";		
+		// CONSULTA A LA BBDD CON FILTRO Id
+		Microwarrior microwarrior=new Microwarrior();
+		return microwarrior.getnombre();		
 	}
 	
 	public String listarhistorialcombates() {
 		
+		//CONSULTA A LA BBDD
 		for (int x=0; x<arraycombates.length; x++) { //Utilizamos un bucle para ir mostrando los combates almacenados en una array
 			return arraycombates[x] ;
 		}
@@ -112,6 +115,7 @@ public class Jugador extends Usuario {
 	
 	public String buscarOponente() {
 		
-		return "";
+		Microwarrior microwarrior=new Microwarrior();
+		return microwarrior.getnombre();
 	}
 }

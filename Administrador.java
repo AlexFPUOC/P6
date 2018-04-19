@@ -7,6 +7,7 @@ public class Administrador extends Usuario{
 			
 		jugador.setjugador(nombre_jugador);
 		jugador.setlema(clave_jugador);
+		// CODIGO PARA HACER LA CONSULTA A LA BBDD
 				
 	}
 	
@@ -15,6 +16,7 @@ public class Administrador extends Usuario{
 		Jugador jugador=new Jugador();
 		jugador.setjugador(nombre_jugador);
 		jugador.setlema(clave_jugador);
+		// CODIGO PARA HACER LA CONSULTA A LA BBDD
 	}
 	
 	public void eliminarUsuarioJugador(String nombre_jugador) {
