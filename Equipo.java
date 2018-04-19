@@ -12,7 +12,7 @@ public class Equipo {
 	private String nombre,habesp, tipo;
 	private boolean medionot,destroy,hab;
 	
-	/* Método constructor */
+	/*constructor */
 	public Equipo (int bonfuerza, int bondef, int equipid, String nombre, 
 			String habesp, String tipo, boolean medionot, boolean destroy, boolean hab) {
 		this.bonfuerza=bonfuerza;
@@ -25,7 +25,7 @@ public class Equipo {
 		this.destroy=destroy;
 		this.hab=hab;
 	}
-	/* Métodos get */
+	/*get */
 	public int getBonfuerza() {
 		return this.bonfuerza;
 	}
@@ -53,7 +53,7 @@ public class Equipo {
 	public boolean getHab() {
 		return this.hab;
 	}
-	/* Métodos Set: Dado que los valores de las armas no pueden cambiar *
+	/*Set: Dado que los valores de las armas no pueden cambiar *
 	 * durante la gestión de la aplicación, no se establecerán métodos Set.*/
 	
 }

@@ -7,13 +7,14 @@
  *
  */
 public class Team {
-	/*Máximo miembros de un grupo especificado en 12*/
+	/*MAX. miembros de un grupo especificado en 12*/
 	final int GRUPO_MAX=12;
-	private int totalmiembros, potcomb, ordercombat[], miembros[];
+	private int totalmiembros, potcomb;
+	private Microwarrior ordercombat[], miembros[];
 	private boolean especializado;
 	
-	/*Método constructor*/
-	public Team (int totalmiembros, int potcomb, int ordercombat[], int miembros[],
+	/*Constructor*/
+	public Team (int totalmiembros, int potcomb, Microwarrior ordercombat[], Microwarrior miembros[],
 			boolean especializado) {
 		this.totalmiembros=totalmiembros;
 		this.potcomb=potcomb;
@@ -25,33 +26,33 @@ public class Team {
 		this.especializado=especializado;
 	}
 	
-	/*Métodos get*/
+	/*Get*/
 	public int getTotalmiembros() {
 		return this.totalmiembros;
 	}
 	public int getPotcomb() {
 		return this.potcomb;
 	}
-	public int getOrdercombat(int x) {
+	public Microwarrior getOrdercombat(int x) {
 		return this.ordercombat[x];
 	}
-	public int getMiembros(int x) {
+	public Microwarrior getMiembros(int x) {
 		return this.miembros[x];
 	}
 	public boolean getEspecializado() {
 		return this.especializado;
 	}
-	/*Métodos set*/
+	/*Set*/
 	public void setTotalmiembros(int totalmiembros) {
 		this.totalmiembros=totalmiembros;
 	}
 	public void setPotcomb(int potcomb) {
 		this.potcomb=potcomb;
 	}
-	public void setOrdercombat(int x,int ordercombat) {
+	public void setOrdercombat(int x,Microwarrior ordercombat) {
 		this.ordercombat[x]=ordercombat;
 	}
-	public void setMiembros(int x, int miembros) {
+	public void setMiembros(int x, Microwarrior miembros) {
 		this.miembros[x]=miembros;
 	}
 	public void setEspecializado(boolean especializado) {

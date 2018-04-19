@@ -12,6 +12,7 @@ public class ModoDuelo {
 	private Microwarrior atacante, defensor;
 	private int fatacante, fdefensor, datacante, ddefensor, bonoataqueA, 
 	bonodefensaA, bonoataqueD, bonodefensaD ;
+	private boolean ventajaA, ventajaD;
 	/* Constructor */
 	public ModoDuelo (Microwarrior atacante, Microwarrior defensor) {
 		this.atacante=atacante;
@@ -25,7 +26,9 @@ public class ModoDuelo {
 		this.bonodefensaA=0;
 		this.bonoataqueD=0;
 		this. bonodefensaD=0;
-		
+		/*Significar si uno de los contendientes tiene velocidad extrema*/
+		this.ventajaA=false;
+		this.ventajaD=false;
 	}
 	
 	/* GET */
@@ -74,14 +77,20 @@ public class ModoDuelo {
 		this.bonodefensaD=bonodefensa;
 	}
 	/* METODOS PREVIOS AL COMBATE */
-	private void presentarContendiente(Jugador jugador) {
+	private void presentarContendiente(Jugador jugador, Jugador jugador2) {
 		/*A modificar tras establecer como se muestra en pantalla*/
 		System.out.print (this.atacante.getNombre());
 		System.out.print (jugador.getLema());
 		System.out.print (this.defensor.getNombre());
-		System.out.print (jugador.getLema());
+		System.out.print (jugador2.getLema());
 	}
-	private String seleccionarMedio() {
+	private void presentarContendiente (Jugador jugador, Jugador jugador2, String nombre1, String nombre2) {
+		System.out.print(nombre1);
+		System.out.print(jugador.getLema());
+		System.out.print(nombre2);
+		System.out.print(jugador2.getLema());
+	}
+	public String seleccionarMedio() {
 		String terreno="";
 		Random aleatorio = new Random(System.currentTimeMillis());
 		int intAleatorio = aleatorio.nextInt(6)+1;
@@ -107,9 +116,6 @@ public class ModoDuelo {
 		}
 		return terreno;
 	}
-	private void comprobarHabesp() {
-		
-	}
 	private void comprobarMedio() {
 		String medio=seleccionarMedio();
 		if (atacante.getMedio()==medio) {
@@ -120,5 +126,171 @@ public class ModoDuelo {
 			this.bonoataqueD=this.bonoataqueD+1;
 			this.bonodefensaD=this.bonodefensaD+1;
 		}
+	}
+	private void comprobarMedio(String lugarlucha) {
+		String medio=lugarlucha;
+		if (atacante.getMedio()==medio) {
+			this.bonoataqueA=this.bonoataqueA+1;
+			this.bonodefensaA=this.bonodefensaA+1;
+		}
+		if (defensor.getMedio()==medio) {
+			this.bonoataqueD=this.bonoataqueD+1;
+			this.bonodefensaD=this.bonodefensaD+1;
+		}
+	}
+	private void comprobarHabesp() {
+		String habilidad;
+		habilidad=this.atacante.getHabesp();
+		if (habilidad=="velocidad extrema") {
+			this.ventajaA=true;
+		}
+		if (habilidad=="ataque de fuerza concentrada") {
+			Random aleatorio = new Random(System.currentTimeMillis());
+			int intAleatorio = aleatorio.nextInt(3)+1;
+			this.bonoataqueA=this.bonoataqueA + intAleatorio;
+		}
+		habilidad=this.defensor.getHabesp();
+		if (habilidad=="velocidad extrema") {
+			this.ventajaD=true;
+		}
+		if (habilidad=="ataque de fuerza concentrada") {
+			Random aleatorio = new Random(System.currentTimeMillis());
+			int intAleatorio = aleatorio.nextInt(3)+1;
+			this.bonodefensaD=this.bonoataqueD + intAleatorio;
+		}
+	}
+	/* Sobrecargamos para tratar la habilidad ataque f. conc. en TemBattle */
+	private void comprobarHabesp(ModoTeamBattle batalla) {
+		boolean control;
+		String habilidad;
+		habilidad=this.atacante.getHabesp();
+		if (habilidad=="velocidad extrema") {
+			this.ventajaA=true;
+		}
+		if (habilidad=="ataque de fuerza concentrada") {
+			control=batalla.getFactivA();
+			/*Si es true es que ya se ha utilizado y entonces da -1 a la defensa*/
+			if (control) {
+				this.bonodefensaA=this.bonodefensaA-1;
+				batalla.setFactivA(false);
+			} else {
+				/*Si false de 1 a 3 al ataque */
+				Random aleatorio = new Random(System.currentTimeMillis());
+				int intAleatorio = aleatorio.nextInt(3)+1;
+				this.bonoataqueA=this.bonoataqueA + intAleatorio;
+				batalla.setFactivA(true);
+			}
+		}
+		habilidad=this.defensor.getHabesp();
+		if (habilidad=="velocidad extrema") {
+			this.ventajaD=true;
+		}
+		if (habilidad=="ataque de fuerza concentrada") {
+			control=batalla.getFactivD();
+			if (control) {
+				this.bonodefensaD=this.bonodefensaD-1;
+				batalla.setFactivD(false);
+			} else {
+				Random aleatorio = new Random(System.currentTimeMillis());
+				int intAleatorio = aleatorio.nextInt(3)+1;
+				this.bonodefensaD=this.bonoataqueD + intAleatorio;
+				batalla.setFactivD(true);
+			}
+		}
+	}
+	private void comprobarBotin(Microwarrior vencedor) {
+		Random aleatorio = new Random(System.currentTimeMillis());
+		int intAleatorio = aleatorio.nextInt(100)+1;
+		int botin=vencedor.getBotin();
+		if (botin>=intAleatorio) {
+			vencedor.setBotin(3);
+			/* FALTA IMPLEMENTAR ganarEquipo en clase Jugador */
+		} else {
+			if (botin<96) {
+				botin=botin+3;
+			}
+			vencedor.setBotin(botin);
+		}
+	}
+	public int combate(Jugador jugador1,Jugador jugador2) {
+		presentarContendiente(jugador1,jugador2);
+		/* 1 ganador atacante, 2 ganador defensor, 0 empate */
+		int resultado=0;
+		comprobarMedio();
+		comprobarHabesp();
+		int fuerzaA=this.fatacante + this.bonoataqueA;
+		int fuerzaD=this.fdefensor + this.bonoataqueD;
+		int defenA=this.datacante + this.bonodefensaA;
+		int defenD=this.ddefensor + this.bonodefensaD;
+		if ((fuerzaA>=defenD) && (this.ventajaA) && !(this.ventajaD)) {
+			resultado=1;
+		}
+		if ((fuerzaD>=defenA)&& (this.ventajaD)&& !(this.ventajaA)) {
+			resultado=2;
+		}
+		if ((fuerzaA>=defenD)&& (this.ventajaA) && (this.ventajaD) && (fuerzaD>=defenA)) {
+			resultado=0;
+		}
+		if ((fuerzaA>=defenD)&& (this.ventajaA) && (this.ventajaD) && (fuerzaD<defenA)) {
+			resultado=1;
+		}
+		if ((fuerzaA<defenD)&& (this.ventajaA) && (this.ventajaD) && (fuerzaD>=defenA)) {
+			resultado=2;
+		}
+		if ((fuerzaA>=defenD)&& !(this.ventajaA) && !(this.ventajaD) && (fuerzaD>=defenA)) {
+			resultado=0;
+		}
+		if ((fuerzaA>=defenD)&& !(this.ventajaA) && !(this.ventajaD) && (fuerzaD<defenA)) {
+			resultado=1;
+		}
+		if ((fuerzaA<defenD)&& !(this.ventajaA) && !(this.ventajaD) && (fuerzaD>=defenA)) {
+			resultado=2;
+		}
+		switch (resultado) {
+		case 0: break;
+		case 1: comprobarBotin(this.atacante);
+				break;
+		case 2: comprobarBotin(this.defensor);
+				break;
+		}
+		return resultado;
+	}
+	/*Sobrecargamos el combate para el modoteambattle*/
+	public int combate(Jugador jugador1,Jugador jugador2, int bonusA, int bonusD, 
+			String nombre1, String nombre2, String medio, ModoTeamBattle batalla) {
+		presentarContendiente(jugador1,jugador2, nombre1, nombre2);
+		/* 1 ganador atacante, 2 ganador defensor, 0 empate */
+		int resultado=0;
+		comprobarMedio(medio);
+		comprobarHabesp(batalla);
+		int fuerzaA=this.fatacante + this.bonoataqueA + bonusA;
+		int fuerzaD=this.fdefensor + this.bonoataqueD + bonusD;
+		int defenA=this.datacante + this.bonodefensaA + bonusA;
+		int defenD=this.ddefensor + this.bonodefensaD + bonusD;
+		if ((fuerzaA>=defenD) && (this.ventajaA) && !(this.ventajaD)) {
+			resultado=1;
+		}
+		if ((fuerzaD>=defenA)&& (this.ventajaD)&& !(this.ventajaA)) {
+			resultado=2;
+		}
+		if ((fuerzaA>=defenD)&& (this.ventajaA) && (this.ventajaD) && (fuerzaD>=defenA)) {
+			resultado=0;
+		}
+		if ((fuerzaA>=defenD)&& (this.ventajaA) && (this.ventajaD) && (fuerzaD<defenA)) {
+			resultado=1;
+		}
+		if ((fuerzaA<defenD)&& (this.ventajaA) && (this.ventajaD) && (fuerzaD>=defenA)) {
+			resultado=2;
+		}
+		if ((fuerzaA>=defenD)&& !(this.ventajaA) && !(this.ventajaD) && (fuerzaD>=defenA)) {
+			resultado=0;
+		}
+		if ((fuerzaA>=defenD)&& !(this.ventajaA) && !(this.ventajaD) && (fuerzaD<defenA)) {
+			resultado=1;
+		}
+		if ((fuerzaA<defenD)&& !(this.ventajaA) && !(this.ventajaD) && (fuerzaD>=defenA)) {
+			resultado=2;
+		}
+		return resultado;
 	}
 }
