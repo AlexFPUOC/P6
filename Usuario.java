@@ -1,47 +1,58 @@
-
 public class Usuario {
 	
-	String nombreusuario, claveacceso;
+	public static String nombreusuario, claveacceso, id;
 	
 	public Usuario() {
-		this.nombreusuario="";
-		claveacceso="";
+		//nombreusuario="";
+		//claveacceso="";
 	}
 	
 	public static void main(String[] args) {
+
+		//Ejemplo de crear un Usuario Jugador
+		Administrador player=new Administrador();
+		Controlador cont=new Controlador();
 		
+		player.crearUsuarioJugador("nombre", "clave");
+		cont.crearUsuarioJugador(player);
 		
-		Usuario user=new Usuario();
-		user.crearAdmin("nombre");
-		user.crearClave("clave");
-		
-		//EJECUCIÓN DEL CÓDIGO...
+			
 	}
 	
 	public void crearAdmin(String nombre){ //SETTER PARA ESTABLECER EL NOMBRE DEL ADMINISTRADOR
 		
 		nombreusuario=nombre;
-		// CODIGO PARA HACER LA CONSULTA A LA BBDD
+		
 		
 	}
 
 	public void crearClave(String clave) { //SETTER PARA ESTABLECER LA CLAVE DEL ADMINISTRADOR
 		
 		claveacceso=clave;
-		// CODIGO PARA HACER LA CONSULTA A LA BBDD
+		
 		
 	}
 	
-	public String obtener_usuario(){ //GETTER PARA OBTENER EL NOMBRE DE USUARIO
+	public static String obtener_usuario(){ //GETTER PARA OBTENER EL NOMBRE DE USUARIO
 		
 		return nombreusuario;
-		// CODIGO PARA HACER LA CONSULTA A LA BBDD
+		
 	}
 	
-	public String obtener_clave() { //GETTER PARA OBTENER LA CLAVE DEL USUARIO
+	public static String obtener_clave() { //GETTER PARA OBTENER LA CLAVE DEL USUARIO
 		
 		return claveacceso;
-		// CODIGO PARA HACER LA CONSULTA A LA BBDD
+		
+	}
+	
+	public static String obtener_id() {
+		return id;
+	}
+	
+	public void setid(String ID) {
+		
+		id=ID;
+		
 	}
 	
 	

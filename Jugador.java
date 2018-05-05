@@ -2,7 +2,7 @@ import java.lang.reflect.Array;
 
 public class Jugador extends Usuario {
 
-	private String nombrejugador, lema;
+	private static String nombrejugador, lema;
 	
 	public Jugador() {
 		
@@ -10,12 +10,12 @@ public class Jugador extends Usuario {
 		lema="";
 	}
 	
-	public String getjugador() { //GETTER PARA OBTENER EL NOMBRE DEL JUGADOR
+	public static String getjugador() { //GETTER PARA OBTENER EL NOMBRE DEL JUGADOR
 		
 		return nombrejugador;
 	}
 	
-	public String getlema() { //GETTER PARA OBTENER EL LEMA DEL JUGADOR
+	public static String getlema() { //GETTER PARA OBTENER EL LEMA DEL JUGADOR
 		
 		return lema;
 	}
@@ -32,49 +32,61 @@ public class Jugador extends Usuario {
 	
 	//GESTION DE MICROWARRIORS
 	
-	public void crearMicrowarrior() {
+	public void crearMicrowarrior(String nombre, String raza, String medio, String habilidad, String imagen, int ataque, int defensa, Boolean combate) {
 		
-		Microwarrior nuevo_microwarrior=new Microwarior("nombre", "raza", "medio", "habilidad", "imagen", "lema", 5, 5, 1, true);
+		Microwarrior nuevo_microwarrior=new Microwarrior(nombre, raza, medio, habilidad, imagen, ataque, defensa, combate);
+		nuevo_microwarrior.setNombre(nombre);
+		nuevo_microwarrior.setRaza(raza);
+		nuevo_microwarrior.setMedio(medio);
+		nuevo_microwarrior.setHabesp(habilidad);
+		nuevo_microwarrior.setImg(imagen);
+		nuevo_microwarrior.setAtaque(ataque);
+		nuevo_microwarrior.setDefensa(defensa);
+		nuevo_microwarrior.setCombate(combate);	
 		
 	}
 	
-	private void editMicrowarrior(String id) {
+	public void editMicrowarrior(int id, String nombre, String habilidad, String imagen) {
 		
-		Microwarrior microwarrior=new Microwarior();
-		microwarrior.setNombre();
-		microwarrior.setHabesp();
-		microwarrior.setImg();
-		microwarrior.setLema();
+		Microwarrior microwarrior=new Microwarrior(nombre, Microwarrior.getRaza(), Microwarrior.getMedio(), habilidad, imagen, Microwarrior.getAtaque(), Microwarrior.getDefensa(), Microwarrior.getCombate());
+		microwarrior.setId(id);
+		microwarrior.setNombre(nombre);
+		microwarrior.setHabesp(habilidad);
+		microwarrior.setImg(imagen);
+		
 	}
 	
-	private void deleteMicrowarrior() {
+	public void deleteMicrowarrior(int id) {
 		
-		// código para borrar de la BBDD?
+		Microwarrior microwarrior=new Microwarrior(Microwarrior.getNombre(), Microwarrior.getRaza(), Microwarrior.getMedio(), Microwarrior.getHabesp(), Microwarrior.getImg(), Microwarrior.getAtaque(), Microwarrior.getDefensa(), Microwarrior.getCombate());
+		microwarrior.setId(id);
 	}
 	
 	//GESTION DE EQUIPOS
 	
-	public void crearTeam() {
+	public void crearTeam(int totalmiembros, int potcomb, Microwarrior ordercombat[], Microwarrior miembros[], boolean especializado) {
 		
-		Team nuevo_equipo=new Team();
-		nuevo_equipo.setTotalmiembros();
-		nuevo_equipo.setPotcomb();
-		nuevo_equipo.setOrdercombat();
-		nuevo_equipo.setMiembros();
-		nuevo_equipo.setEspecializado();
+		Team nuevo_equipo=new Team(totalmiembros, potcomb, ordercombat, miembros, especializado );
+		nuevo_equipo.setTotalmiembros(totalmiembros);
+		nuevo_equipo.setPotcomb(potcomb);
+		nuevo_equipo.setOrdercombat(1, ordercombat);
+		nuevo_equipo.setMiembros(1, miembros);
+		nuevo_equipo.setEspecializado(especializado);
 		
 	}
 	
-	private void editTeam(String Id) {
+	public void editTeam(int Id) {
 		
-		Team team=new Team();
-		team.setOrdercombat();
-		team.setMiembros();
+		Team equipo=new Team(Team.getTotalmiembros(), Team.getPotcomb(), Team.getOrdercombat(0), Team.getMiembros(0), Team.getEspecializado());
+		equipo.setid(Id);
+		equipo.setMiembros(0, nmiembros);
+		
 	}
 	
-	private void deleteTeam(String Id) {
+	public void deleteTeam(int Id) {
 		
-		// código para borrar de la BBDD?
+		Team equipo=new Team(Team.getTotalmiembros(), Team.getPotcomb(), Team.getOrdercombat(0), Team.getMiembros(0), Team.getEspecializado());
+		equipo.setid(Id);
 	}
 	
 	public String listarmicrowarriors() {
@@ -86,11 +98,10 @@ public class Jugador extends Usuario {
 		
 	}
 	
-	public String buscarmicrowarrior(String Id) {
+	public void buscarmicrowarrior(int Id) {
 		
-		// CONSULTA A LA BBDD CON FILTRO Id
-		Microwarrior microwarrior=new Microwarrior();
-		return microwarrior.getnombre();		
+		Microwarrior microwarrior=new Microwarrior(Microwarrior.getNombre(), Microwarrior.getRaza(), Microwarrior.getMedio(), Microwarrior.getHabesp(), Microwarrior.getImg(), Microwarrior.getAtaque(), Microwarrior.getDefensa(), Microwarrior.getCombate());
+		microwarrior.setId(Id);	
 	}
 	
 	public String listarhistorialcombates() {
@@ -104,7 +115,7 @@ public class Jugador extends Usuario {
 	
 	public String buscarOponente() {
 		
-		Microwarrior microwarrior=new Microwarrior();
+		Microwarrior microwarrior=new Microwarrior(Microwarrior.getNombre(), Microwarrior.getRaza(), Microwarrior.getMedio(), Microwarrior.getHabesp(), Microwarrior.getImg(), Microwarrior.getAtaque(), Microwarrior.getDefensa(), Microwarrior.getCombate());
 		return microwarrior.getnombre();
 	}
 }
