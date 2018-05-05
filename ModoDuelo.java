@@ -80,15 +80,15 @@ public class ModoDuelo {
 	private void presentarContendiente(Jugador jugador, Jugador jugador2) {
 		/*A modificar tras establecer como se muestra en pantalla*/
 		System.out.print (this.atacante.getNombre());
-		System.out.print (jugador.getLema());
+		System.out.print (jugador.getlema());
 		System.out.print (this.defensor.getNombre());
-		System.out.print (jugador2.getLema());
+		System.out.print (jugador2.getlema());
 	}
 	private void presentarContendiente (Jugador jugador, Jugador jugador2, String nombre1, String nombre2) {
 		System.out.print(nombre1);
-		System.out.print(jugador.getLema());
+		System.out.print(jugador.getlema());
 		System.out.print(nombre2);
-		System.out.print(jugador2.getLema());
+		System.out.print(jugador2.getlema());
 	}
 	public String seleccionarMedio() {
 		String terreno="";
