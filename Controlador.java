@@ -28,12 +28,12 @@ public class Controlador {
 	}
 	
 	
-	public void crearMicrowarrior(Jugador microwarrior) {
+	public void crearMicrowarrior(Jugador jugador, Microwarrior microwarrior) {
 		iDAO dao=new EjecucionSQL();
-		dao.crearMicrowarrior(microwarrior);
+		dao.crearMicrowarrior(jugador, microwarrior);
 	}
 	
-	public void editMicrowarrior(Jugador microwarrior) {
+	public void editMicrowarrior(Microwarrior microwarrior) {
 		iDAO dao=new EjecucionSQL();
 		dao.editMicrowarrior(microwarrior);
 	}
@@ -43,25 +43,25 @@ public class Controlador {
 		dao.deleteMicrowarrior(microwarrior);
 	}
 	
-	public void crearTeam(Jugador team) {
+	public void crearTeam(Jugador jugador, Team team) {
 		iDAO dao=new EjecucionSQL();
-		dao.crearTeam(team);
+		dao.crearTeam(jugador, team);
 	}
 	
-	public void editTeam(Jugador team) {
+	public void editTeam(Jugador jugador, Team team) {
 		iDAO dao=new EjecucionSQL();
-		dao.editTeam(team);
+		dao.editTeam(jugador, team);
 	}
 	
-	public void deleteTeam(Jugador team) {
+	public void deleteTeam(Team team) {
 		iDAO dao=new EjecucionSQL();
-		dao.editTeam(team);
+		dao.deleteTeam(team);
 	}
 	
-	public void buscarMicrowarrior() {
+	public void buscarMicrowarrior(Jugador jugador) {
 		List<Microwarrior> datos=new ArrayList<Microwarrior>();
 		iDAO dao=new EjecucionSQL();
-		datos=dao.buscarMicrowarrior();
+		datos=dao.buscarMicrowarrior(jugador);
 		vista.verMicrowarrior(datos);
 	}
 

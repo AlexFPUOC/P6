@@ -9,129 +9,130 @@
 public class Microwarrior {
 	/*El botin inicial es 3*/
 	final int BOTIN_INICIAL=3;
-	private String nombre, raza, medio, habesp, img, nombreTeam;
-	private int ataque, defensa, botin, id, equid, victorias, derrotas, empates, fv;
-	private boolean combate, inteam;
+	private static String nombre, raza, medio, habesp, img, nombreTeam;
+	private static int ataque, defensa, botin, id, equid, victorias, derrotas, empates, fv;
+	private static boolean combate, inteam;
 	
 	/*Constructor*/
 	public Microwarrior (String nombre, String raza, String medio, String habesp,
-			String img, String lema, int ataque, int defensa, int id, boolean combate) {
-		this.nombre=nombre;
-		this.raza=raza;
-		this.medio=medio;
-		this.habesp=habesp;
-		this.img=img;
-		this.ataque=ataque;
-		this.defensa=defensa;
-		this.botin=BOTIN_INICIAL;
-		this.id=id;
+			String img, int ataque, int defensa, boolean combate) {
+		Microwarrior.nombre=nombre;
+		Microwarrior.raza=raza;
+		Microwarrior.medio=medio;
+		Microwarrior.habesp=habesp;
+		Microwarrior.img=img;
+		Microwarrior.ataque=ataque;
+		Microwarrior.defensa=defensa;
+		Microwarrior.botin=BOTIN_INICIAL;
 		/*El Microwarrior se crea sin equipo*/
-		this.equid=0;
-		this.combate=combate;
+		Microwarrior.equid=0;
+		Microwarrior.combate=combate;
+		/*Al comienzo el Microwarrior se crea sin pertenecer a ningún equipo*/
+		Microwarrior.inteam=false;
 	}
 	/*Get*/
-	public String getNombre() {
-		return this.nombre;
+	public static String getNombre() {
+		return nombre;
 	}
-	public String getRaza() {
-		return this.raza;
+	public static String getRaza() {
+		return raza;
 	}
-	public String getMedio() {
-		return this.medio;
+	public static String getMedio() {
+		return medio;
 	}
-	public String getHabesp() {
-		return this.habesp;
+	public static String getHabesp() {
+		return habesp;
 	}
-	public String getImg() {
-		return this.img;
+	public static String getImg() {
+		return img;
 	}
-	public String getNombreTeam() {
-		return this.nombreTeam;
+	public static String getNombreTeam() {
+		return nombreTeam;
 	}
-	public int getAtaque() {
-		return this.ataque;
+	public static int getAtaque() {
+		return ataque;
 	}
-	public int getDefensa() {
-		return this.defensa;
+	public static int getDefensa() {
+		return defensa;
 	}
-	public int getBotin() {
-		return this.botin;
+	public static int getBotin() {
+		return botin;
 	}
-	public int getId() {
-		return this.id;
+	public static int getId() {
+		return id;
 	}
-	public int getEquid() {
-		return this.equid;
+	public static int getEquid() {
+		return equid;
 	}
-	public int getVictorias() {
-		return this.victorias;
+	public static int getVictorias() {
+		return victorias;
 	}
-	public int getDerrotas() {
-		return this.derrotas;
+	public static int getDerrotas() {
+		return derrotas;
 	}
-	public int getEmpates() {
-		return this.empates;
+	public static int getEmpates() {
+		return empates;
 	}
-	public int getFv() {
-		return this.fv;
+	public static int getFv() {
+		return fv;
 	}
-	public boolean getCombate() {
-		return this.combate;
+	public static boolean getCombate() {
+		return combate;
 	}
-	public boolean getInteam() {
-		return this.inteam;
+	public static boolean getInteam() {
+		return inteam;
 	}
 	/*Set*/
 	public void setNombre(String nombre) {
-		this.nombre=nombre;
+		Microwarrior.nombre=nombre;
 	}
 	public void setRaza(String raza) {
-		this.raza=raza;
+		Microwarrior.raza=raza;
 	}
 	public void setMedio(String medio) {
-		this.medio=medio;
+		Microwarrior.medio=medio;
 	}
 	public void setHabesp(String habesp) {
-		this.habesp=habesp;
+		Microwarrior.habesp=habesp;
 	}
 	public void setImg(String img) {
-		this.img=img;
+		Microwarrior.img=img;
 	}
 	public void setNombreTeam(String nombreTeam) {
-		this.nombreTeam=nombreTeam;
+		Microwarrior.nombreTeam=nombreTeam;
 	}
 	public void setAtaque(int ataque) {
-		this.ataque=ataque;
+		Microwarrior.ataque=ataque;
 	}
 	public void setDefensa(int defensa) {
-		this.defensa=defensa;
+		Microwarrior.defensa=defensa;
 	}
 	public void setBotin(int botin) {
-		this.botin=botin;
+		Microwarrior.botin=botin;
 	}
 	public void setId(int id) {
-		this.id=id;
+		Microwarrior.id=id;
 	}
 	private void setEquid(int equid) {
-		this.equid=equid;
+		Microwarrior.equid=equid;
 	}
 	public void setVictoria(int victorias) {
-		this.victorias=victorias;
+		Microwarrior.victorias=victorias;
 	}
 	public void setDerrotas(int derrotas) {
-		this.derrotas=derrotas;
+		Microwarrior.derrotas=derrotas;
 	}
 	public void setEmpates(int empates) {
-		this.empates=empates;
+		Microwarrior.empates=empates;
 	}
 	public void setFv(int fv) {
-		this.fv=fv;
+		Microwarrior.fv=fv;
 	}
 	public void setCombate(boolean combate) {
-		this.combate=combate;
+		Microwarrior.combate=combate;
 	}
 	public void setInteam(boolean inteam) {
-		this.inteam=inteam;
+		Microwarrior.inteam=inteam;
 	}
 	/*Equipar. Vincula id de equipo a Microwarrior*/
 	public void Equipar(int id) {

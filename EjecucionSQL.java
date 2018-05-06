@@ -74,13 +74,13 @@ public class EjecucionSQL implements iDAO {
 		}
 	}
 	
-	public void crearMicrowarrior(Jugador microwarrior) {
+	public void crearMicrowarrior(Jugador jugador, Microwarrior microwarrior) {
 		
 		Statement stm=null;
 		Connection con=null;
 		
-		String sql="INSERT INTO MICROWARRIORS (nombre , raza, medio, habesp, img, nombreTeam, ataque, defensa, botin, combate) "
-				+ "VALUES ('"+Microwarrior.getNombre()+"', '"+Microwarrior.getRaza()+"', '"+Microwarrior.getMedio()+"', '"+Microwarrior.getHabesp()+"', '"+Microwarrior.getImg()+"', '"+Microwarrior.getNombreTeam()+"', '"+Microwarrior.getAtaque()+"', '"+Microwarrior.getDefensa()+"', '"+Microwarrior.getBotin()+"', '"+Microwarrior.getCombate()+"')";
+		String sql="INSERT INTO MICROWARRIORS (nombre , raza, medio, habesp, img, ataque, defensa, botin, combate, inteam, id_jugador) "
+				+ "VALUES ('"+Microwarrior.getNombre()+"', '"+Microwarrior.getRaza()+"', '"+Microwarrior.getMedio()+"', '"+Microwarrior.getHabesp()+"', '"+Microwarrior.getImg()+"', '"+Microwarrior.getAtaque()+"', '"+Microwarrior.getDefensa()+"', '"+Microwarrior.getBotin()+"', '"+Microwarrior.getCombate()+"', '"+Microwarrior.getInteam()+"', '"+Jugador.getId()+"')";
 		
 		try {
 			con=Conexion.conectar();
@@ -93,11 +93,11 @@ public class EjecucionSQL implements iDAO {
 		}
 	}
 	
-	public void editMicrowarrior(Jugador microwarrior) {
+	public void editMicrowarrior(Microwarrior microwarrior) {
 		Statement stm=null;
 		Connection con=null;
 		
-		String sql="UPDATE MICROWARRIORS SET nombre='"+Microwarrior.getNombre()+"', habesp='"+Microwarrior.getHabesp()+"', img='"+Microwarrior.getImg()+"' WHERE id="+Microwarrior.getId();
+		String sql="UPDATE MICROWARRIORS SET nombre='"+Microwarrior.getNombre()+"', habesp='"+Microwarrior.getHabesp()+"', img='"+Microwarrior.getImg()+"' WHERE id="+Microwarrior.getId()+"'";
 		
 		try {
 			con=Conexion.conectar();
@@ -128,11 +128,11 @@ public class EjecucionSQL implements iDAO {
 		
 	}
 	
-	public void crearTeam(Jugador team) {
+	public void crearTeam(Jugador jugador, Team team) {
 		Statement stm=null;
 		Connection con=null;
 		
-		String sql="INSERT INTO TEAMS (totalmiembros, potcomb, ordercombat, miembros, especializado) VALUES ('"+Team.getTotalmiembros()+"', '"+Team.getPotcomb()+"', '"+Team.getOrdercombat(1)+"', '"+Team.getMiembros(1)+"', '"+Team.getEspecializado()+"')";
+		String sql="INSERT INTO TEAMS (totalmiembros, potcomb, ordercombat, miembros, especializado) VALUES ('"+team.getTotalmiembros()+"', '"+team.getPotcomb()+"', '"+team.getOrdercombat(1)+"', '"+team.getMiembros(1)+"', '"+team.getEspecializado()+"')";
 		
 		try {
 			con=Conexion.conectar();
@@ -145,11 +145,11 @@ public class EjecucionSQL implements iDAO {
 		}
 	}
 	
-	public void editTeam(Jugador team) {
+	public void editTeam(Jugador jugador, Team team) {
 		Statement stm=null;
 		Connection con=null;
 		
-		String sql="UPDATE TEAMS SET ordercombat='"+Team.getOrdercombat(0)+"', miembros='"+Team.getMiembros(0)+"' WHERE id="+Team.getid();
+		String sql="UPDATE TEAMS SET ordercombat='"+team.getOrdercombat(0)+"', miembros='"+team.getMiembros(0)+"' WHERE id="+Jugador.getId();
 		
 		try {
 			con=Conexion.conectar();
@@ -162,11 +162,11 @@ public class EjecucionSQL implements iDAO {
 		}
 	}
 	
-	public void deleteTeam(Jugador team) {
+	public void deleteTeam(Team team) {
 		Statement stm=null;
 		Connection con=null;
 		
-		String sql="DELETE FROM TEAMS WHERE id="+Team.getid();
+		String sql="DELETE FROM TEAMS WHERE id="+team.getId();
 		
 		try {
 			con=Conexion.conectar();
@@ -180,13 +180,13 @@ public class EjecucionSQL implements iDAO {
 	}
 	
 	@Override
-	public List<Microwarrior> buscarMicrowarrior(){
+	public List<Microwarrior> buscarMicrowarrior(Jugador jugador){
 		
 		Statement stm=null;
 		Connection con=null;
 		ResultSet rs=null;
 		
-		String sql="SELECT * FROM MICROWARRIORS";//WHERE id="+Microwarrior.getId();
+		String sql="SELECT * FROM MICROWARRIORS WHERE id_jugador='"+Jugador.getId()+"'";
 		
 		List<Microwarrior> buscamicrowarrior=new ArrayList<Microwarrior>();
 		

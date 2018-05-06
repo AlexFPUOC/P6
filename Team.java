@@ -9,7 +9,7 @@
 public class Team {
 	/*MAX. miembros de un grupo especificado en 12*/
 	final int GRUPO_MAX=12;
-	private int totalmiembros, potcomb;
+	private int totalmiembros, potcomb, id;
 	private Microwarrior ordercombat[], miembros[];
 	private boolean especializado;
 	
@@ -27,6 +27,9 @@ public class Team {
 	}
 	
 	/*Get*/
+	public int getId() {
+		return this.id;
+	}
 	public int getTotalmiembros() {
 		return this.totalmiembros;
 	}

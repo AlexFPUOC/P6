@@ -7,14 +7,14 @@ public interface iDAO {
 	public void eliminarUsuarioJugador(Usuario jugador);
 	
 	public void setlema(Jugador lema);
-	public void crearMicrowarrior(Jugador microwarrior);
-	public void editMicrowarrior(Jugador microwarrior);
+	public void crearMicrowarrior(Jugador  jugador, Microwarrior microwarrior);
+	public void editMicrowarrior(Microwarrior microwarrior);
 	public void deleteMicrowarrior(Jugador microwarrior);
 	
-	public void crearTeam(Jugador team);
-	public void editTeam(Jugador team);
-	public void deleteTeam(Jugador team);
+	public void crearTeam(Jugador jugador, Team team);
+	public void editTeam(Jugador jugador, Team team);
+	public void deleteTeam(Team team);
 	
-	public List<Microwarrior> buscarMicrowarrior();
+	public List<Microwarrior> buscarMicrowarrior(Jugador jugador);
 	
 }

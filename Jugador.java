@@ -3,13 +3,16 @@ import java.lang.reflect.Array;
 public class Jugador extends Usuario {
 
 	private static String nombrejugador, lema;
+	private static int id;
 	
 	public Jugador() {
 		
 		nombrejugador="";
 		lema="";
 	}
-	
+	public static int getId() {
+		return id;
+	}
 	public static String getjugador() { //GETTER PARA OBTENER EL NOMBRE DEL JUGADOR
 		
 		return nombrejugador;
@@ -32,7 +35,7 @@ public class Jugador extends Usuario {
 	
 	//GESTION DE MICROWARRIORS
 	
-	public void crearMicrowarrior(String nombre, String raza, String medio, String habilidad, String imagen, int ataque, int defensa, Boolean combate) {
+	public void crearMicrowarrior(String nombre, String raza, String medio, String habilidad, String imagen, int ataque, int defensa, int id, Boolean combate) {
 		
 		Microwarrior nuevo_microwarrior=new Microwarrior(nombre, raza, medio, habilidad, imagen, ataque, defensa, combate);
 		nuevo_microwarrior.setNombre(nombre);
@@ -46,7 +49,7 @@ public class Jugador extends Usuario {
 		
 	}
 	
-	public void editMicrowarrior(int id, String nombre, String habilidad, String imagen) {
+	public void editMicrowarrior(int id, String nombre, String raza, String medio, String habilidad, String imagen, int ataque, int defensa, Boolean combate) {
 		
 		Microwarrior microwarrior=new Microwarrior(nombre, Microwarrior.getRaza(), Microwarrior.getMedio(), habilidad, imagen, Microwarrior.getAtaque(), Microwarrior.getDefensa(), Microwarrior.getCombate());
 		microwarrior.setId(id);
@@ -66,18 +69,22 @@ public class Jugador extends Usuario {
 	
 	public void crearTeam(int totalmiembros, int potcomb, Microwarrior ordercombat[], Microwarrior miembros[], boolean especializado) {
 		
+		final int GRUPO_MAX=12;
+		int x;
 		Team nuevo_equipo=new Team(totalmiembros, potcomb, ordercombat, miembros, especializado );
 		nuevo_equipo.setTotalmiembros(totalmiembros);
 		nuevo_equipo.setPotcomb(potcomb);
-		nuevo_equipo.setOrdercombat(1, ordercombat);
-		nuevo_equipo.setMiembros(1, miembros);
+		for (x=0; x<GRUPO_MAX; x++) {
+		nuevo_equipo.setOrdercombat(x,ordercombat[x]);
+		nuevo_equipo.setMiembros(x, miembros[x]);
+		}
 		nuevo_equipo.setEspecializado(especializado);
 		
 	}
 	
-	public void editTeam(int Id) {
+	public void editTeam(Team team) {
 		
-		Team equipo=new Team(Team.getTotalmiembros(), Team.getPotcomb(), Team.getOrdercombat(0), Team.getMiembros(0), Team.getEspecializado());
+		Team equipo=new Team(team.getTotalmiembros(), team.getPotcomb(), team.getOrdercombat(0), team.getMiembros(0), team.getEspecializado());
 		equipo.setid(Id);
 		equipo.setMiembros(0, nmiembros);
 		
