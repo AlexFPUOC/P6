@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="445.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador_interfaz">
+   <children>
+      <TextField fx:id="nombre_jugador" layoutX="60.0" layoutY="140.0" prefHeight="25.0" prefWidth="230.0" />
+      <TextField fx:id="pass_jugador" layoutX="60.0" layoutY="225.0" />
+      <Text layoutX="63.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de Jugador" />
+      <Text layoutX="63.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" />
+      <Button fx:id="registrar_jugador" layoutX="60.0" layoutY="310.0" mnemonicParsing="false" onAction="#crearJugador" text="Registrar" />
+   </children>
+</AnchorPane>
