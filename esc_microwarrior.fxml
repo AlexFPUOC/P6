@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="622.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador_microwarrior">
+   <children>
+      <Text fill="#d30a32" layoutX="150.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Microwarrior" wrappingWidth="252.13671875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="85.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="82.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Raza">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="335.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medio">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="81.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Habilidad">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="80.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imagen">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="81.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ataque">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="320.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defensa">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="82.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="182.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Listo para combatir?">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField id="nombreText" layoutX="246.0" layoutY="127.0" promptText="Microwarrior">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField id="razaText" layoutX="158.0" layoutY="195.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField id="medioText" layoutX="403.0" layoutY="195.0" prefHeight="30.0" prefWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField id="habilidadText" layoutX="185.0" layoutY="242.0" prefHeight="30.0" prefWidth="368.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField id="imagenText" layoutX="165.0" layoutY="289.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField id="ataqueText" layoutX="74.0" layoutY="386.0" prefHeight="80.0" prefWidth="95.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField id="defensaText" layoutX="308.0" layoutY="386.0" prefHeight="80.0" prefWidth="95.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <TextField id="idText" layoutX="54.0" layoutY="517.0" prefHeight="51.0" prefWidth="73.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField id="combateText" layoutX="403.0" layoutY="518.0" prefHeight="25.0" prefWidth="71.0" promptText="Sí / No">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Button id="crearText" layoutX="249.0" layoutY="568.0" mnemonicParsing="false" onAction="#crear_Micro" text="Crear">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
